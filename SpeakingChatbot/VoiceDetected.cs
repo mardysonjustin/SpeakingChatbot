@@ -11,12 +11,14 @@ namespace SpeakingChatbot
 {
     internal class VoiceDetected
     {
-        public static void HandleVoice(Form1 mainForm, string message)
+        public static void HandleVoice(Form1 mainForm, string message, string audioFile)
         {
             Console.WriteLine(message);
 
             if (message == "Voice detected!")
             {
+                int remainingTime = 0;
+
                 Image detectedImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\MukaKoJPG\\MukaKoJPG\\assets\\IMG_20240415_195609_317.jpg");
                 mainForm.SetPictureBoxImage(detectedImage);
 
@@ -24,20 +26,17 @@ namespace SpeakingChatbot
                 {
                     using (var waveOut = new WaveOutEvent())
                     {
-                        using (var mp3Reader = new Mp3FileReader("C:\\Users\\foagr\\Downloads\\ElevenLabs_2024-04-16T05_27_35_Daniel.mp3"))
+                        using (var mp3Reader = new Mp3FileReader(audioFile))
                         {
                             waveOut.Init(mp3Reader);
                             waveOut.Play();
 
-                            // Calculate the time to change the image
-                            int remainingTime = (int)(mp3Reader.TotalTime.TotalMilliseconds - 400); // 1 second before the end
+                            remainingTime = (int)(mp3Reader.TotalTime.TotalMilliseconds);
 
-                            // Set a timer to change the image 1 second before the audio ends
                             Timer timer = new Timer();
                             timer.Interval = remainingTime;
                             timer.Tick += (s, e) =>
                             {
-                                // Load and set the original image
                                 Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
                                 mainForm.SetPictureBoxImage(originalImage);
                             };
@@ -50,9 +49,8 @@ namespace SpeakingChatbot
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("Error playing audio: " + ex.Message);
                 }
             }
             else

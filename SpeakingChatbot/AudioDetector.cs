@@ -1,10 +1,11 @@
 ﻿using System;
 using NAudio.Wave;
+using SpeakingChatbot;
 
 public class AudioDetector : IDisposable
 {
     private const int DefaultBufferSize = 16384;
-    private const float DefaultSoundThreshold = 0.99f;
+    private const float DefaultSoundThreshold = 0.99999f;
 
     private readonly int bufferSize;
     private readonly float soundThreshold;
@@ -18,42 +19,44 @@ public class AudioDetector : IDisposable
         this.soundThreshold = soundThreshold;
     }
 
-    public void AnalyzeAudio(string audioFilePath)
+    public void AnalyzeAudio(string audioFilePath, Form1 mainForm)
     {
         try
         {
-            audioFile = new AudioFileReader(audioFilePath);
-            byte[] buffer = new byte[bufferSize];
-            int bytesRead;
-            bool isSoundDetected = false;
-            bool hasPrintedOhNo = false;
-
-            while ((bytesRead = audioFile.Read(buffer, 0, buffer.Length)) > 0)
+            using (var audioFile = new AudioFileReader(audioFilePath))
             {
-                float maxAmplitude = GetMaxAmplitude(buffer, bytesRead);
-                if (maxAmplitude > soundThreshold)
+                byte[] buffer = new byte[bufferSize];
+                int bytesRead;
+                bool isSoundDetected = false;
+                bool hasPrintedOhNo = false;
+
+                while ((bytesRead = audioFile.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    if (!isSoundDetected)
+                    float maxAmplitude = GetMaxAmplitude(buffer, bytesRead);
+                    if (maxAmplitude > soundThreshold)
                     {
-                        isSoundDetected = true;
-                        hasPrintedOhNo = false;
-                        OnSoundDetected("Voice detected!");
+                        if (!isSoundDetected)
+                        {
+                            isSoundDetected = true;
+                            hasPrintedOhNo = false;
+
+                            OnSoundDetected("Voice detected!");
+                        }
                     }
-                }
-                else
-                {
-                    if (isSoundDetected && !hasPrintedOhNo)
+                    else
                     {
-                        OnSoundDetected("Oh no!");
-                        hasPrintedOhNo = true;
+                        if (isSoundDetected && !hasPrintedOhNo)
+                        {
+                            OnSoundDetected("Oh no!");
+                            hasPrintedOhNo = true;
+                        }
+                        isSoundDetected = false;
                     }
-                    isSoundDetected = false;
                 }
             }
         }
         catch (Exception ex)
         {
-            // Handle exceptions (e.g., file not found, unsupported format)
             Console.WriteLine($"Error analyzing audio: {ex.Message}");
         }
     }
@@ -63,11 +66,11 @@ public class AudioDetector : IDisposable
         float maxAmplitude = 0;
         for (int i = 0; i < bytesRead / 2; i += 2)
         {
-            short sample = (short)((buffer[i + 1] << 8) | buffer[i]); // Convert bytes to short, considering endianness
+            short sample = (short)((buffer[i + 1] << 8) | buffer[i]);
             float amplitude;
             if (sample == short.MinValue)
             {
-                amplitude = 1.0f; // Handle the case of the minimum negative value separately
+                amplitude = 1.0f;
             }
             else
             {
