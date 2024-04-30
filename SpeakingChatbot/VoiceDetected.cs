@@ -11,14 +11,12 @@ namespace SpeakingChatbot
 {
     internal class VoiceDetected
     {
-        public static void HandleVoice(Form1 mainForm, string message, string audioFile)
+        public static void HandleVoice(Form1 mainForm, string message, string audioFile, string firstWord, string words)
         {
             Console.WriteLine(message);
 
-            if (message == "Voice detected!")
+            if (message == "Voice detected!" && firstWord == words)
             {
-                int remainingTime = 0;
-
                 Image detectedImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\MukaKoJPG\\MukaKoJPG\\assets\\IMG_20240415_195609_317.jpg");
                 mainForm.SetPictureBoxImage(detectedImage);
 
@@ -30,8 +28,7 @@ namespace SpeakingChatbot
                         {
                             waveOut.Init(mp3Reader);
                             waveOut.Play();
-
-                            remainingTime = (int)(mp3Reader.TotalTime.TotalMilliseconds);
+                            int remainingTime = (int)(mp3Reader.TotalTime.TotalMilliseconds);
 
                             Timer timer = new Timer();
                             timer.Interval = remainingTime;
@@ -39,6 +36,7 @@ namespace SpeakingChatbot
                             {
                                 Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
                                 mainForm.SetPictureBoxImage(originalImage);
+                                timer.Stop();
                             };
                             timer.Start();
 
@@ -58,6 +56,7 @@ namespace SpeakingChatbot
                 Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
                 mainForm.SetPictureBoxImage(originalImage);
             }
+
         }
-    }
+    }            
 }

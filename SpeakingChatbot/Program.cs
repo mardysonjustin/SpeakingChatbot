@@ -19,34 +19,36 @@ internal static class Program
      Form1 mainForm = new Form1();
      AudioDetector audioDetector = new AudioDetector();
 
-     mainForm.UserInputEntered += (sender, userInput) =>
-     {
-         string[] words = userInput.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-         string firstWord = words.Length > 0 ? words[0] : ""; // to make the file name one word only
+        mainForm.UserInputEntered += (sender, userInput) =>
+        {
+            string[] words = userInput.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string wordDapat = words[0];
+            string firstWord = words.Length > 0 ? words[0] : "";
 
-         string wavFilePath = @"C:\Users\Mardyson Justin\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".wav";
-         SynthesizeTextToSpeech(userInput, wavFilePath);
+            string wavFilePath = @"C:\Users\foagr\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".wav";
+            SynthesizeTextToSpeech(userInput, wavFilePath);
 
-         string mp3FilePath = @"C:\Users\Mardyson Justin\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".mp3";
-         Converter.ConvertWavToMp3(wavFilePath, mp3FilePath);
+            string mp3FilePath = @"C:\Users\foagr\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".mp3";
+            Converter.ConvertWavToMp3(wavFilePath, mp3FilePath);
 
-         Task.Run(() =>
-         {
-             audioDetector.SoundDetected += (sender, message) =>
-             {
-                 VoiceDetected.HandleVoice(mainForm, message, mp3FilePath);
-             };
+            string wordDapatCopy = wordDapat;
 
-             audioDetector.AnalyzeAudio(mp3FilePath, mainForm);
+            EventHandler<string> audioHandler = null;
+            audioHandler = (audioSender, message) =>
+            {
+                VoiceDetected.HandleVoice(mainForm, message, mp3FilePath, firstWord, wordDapatCopy);
 
-             File.Delete(wavFilePath);
-             File.Delete(mp3FilePath);
-             audioDetector.Dispose();
-         });
-     };
+                audioDetector.SoundDetected -= audioHandler;
+            };
 
+            audioDetector.SoundDetected += audioHandler;
+            audioDetector.DetectAudio(mp3FilePath);
 
-     Application.Run(mainForm);
+            File.Delete(wavFilePath);
+            File.Delete(mp3FilePath);
+            audioDetector.Dispose();
+        };
+        Application.Run(mainForm);
  }
 
  static void SynthesizeTextToSpeech(string text, string filePath)

@@ -98,7 +98,7 @@ namespace SpeakingChatbot
 
         #endregion
 
-        private PictureBox pictureBox1;
+        public PictureBox pictureBox1;
         private Button button1;
         private RichTextBox richTextBox1;
         private TextBox textBox1;
