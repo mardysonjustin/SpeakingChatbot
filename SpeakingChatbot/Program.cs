@@ -1,32 +1,68 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using NAudio.Wave;
+using NAudio.Lame;
+using System.Speech.Synthesis;
+using System.Speech.AudioFormat;
 using Timer = System.Windows.Forms.Timer;
+using SpeakingChatbot;
 
-namespace SpeakingChatbot
+internal static class Program
 {
-    internal static class Program
-    {
-        [STAThread]
-        static void Main()
+     [STAThread]
+ static void Main()
+ {
+     ApplicationConfiguration.Initialize();
+     Form1 mainForm = new Form1();
+     AudioDetector audioDetector = new AudioDetector();
+
+        mainForm.UserInputEntered += (sender, userInput) =>
         {
-            ApplicationConfiguration.Initialize();
-            Form1 mainForm = new Form1();
-            AudioDetector audioDetector = new AudioDetector();
-            Task.Run(() =>
+            string[] words = userInput.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string wordDapat = words[0];
+            string firstWord = words.Length > 0 ? words[0] : "";
+
+            string wavFilePath = @"C:\Users\foagr\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".wav";
+            SynthesizeTextToSpeech(userInput, wavFilePath);
+
+            string mp3FilePath = @"C:\Users\foagr\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".mp3";
+            Converter.ConvertWavToMp3(wavFilePath, mp3FilePath);
+
+            string wordDapatCopy = wordDapat;
+
+            EventHandler<string> audioHandler = null;
+            audioHandler = (audioSender, message) =>
             {
-                audioDetector.SoundDetected += (sender, message) =>
-                {
-                    VoiceDetected.HandleVoice(mainForm, message);
-                };
+                VoiceDetected.HandleVoice(mainForm, message, mp3FilePath, firstWord, wordDapatCopy);
 
+<<<<<<< HEAD
                 // audioDetector.AnalyzeAudio("C:\\Users\\foagr\\Downloads\\ElevenLabs_2024-04-16T05_27_35_Daniel.mp3");
+=======
+                audioDetector.SoundDetected -= audioHandler;
+            };
+>>>>>>> d397da318f713aa448665733895c931b1442db02
 
-                audioDetector.Dispose();
-            });
-            Application.Run(mainForm);
-        }
-    }
+            audioDetector.SoundDetected += audioHandler;
+            audioDetector.DetectAudio(mp3FilePath);
+
+            File.Delete(wavFilePath);
+            File.Delete(mp3FilePath);
+            audioDetector.Dispose();
+        };
+        Application.Run(mainForm);
+ }
+
+ static void SynthesizeTextToSpeech(string text, string filePath)
+ {
+     using (SpeechSynthesizer synth = new SpeechSynthesizer())
+     {
+         synth.SetOutputToWaveFile(filePath, new SpeechAudioFormatInfo(32000, AudioBitsPerSample.Sixteen, AudioChannel.Mono));
+         PromptBuilder builder = new PromptBuilder();
+         builder.AppendText(text);
+         synth.Speak(builder);
+     }
+ }
 }

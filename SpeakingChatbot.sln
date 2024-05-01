@@ -4,8 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeakingChatbot", "SpeakingChatbot\SpeakingChatbot.csproj", "{66FEECD0-FBAD-479D-B353-3519FE662583}"
+<<<<<<< HEAD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatServer", "ChatServer\ChatServer.csproj", "{5553BA69-AD09-49E7-9BDC-BDC6E7454CB9}"
+=======
+>>>>>>> d397da318f713aa448665733895c931b1442db02
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

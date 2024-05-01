@@ -32,7 +32,6 @@ namespace SpeakingChatbot
                 };
 
 
-
                 var chatPanel = new chatUserControl.ChatUserControl(cbi)
                 {
                     Dock = DockStyle.Fill,
