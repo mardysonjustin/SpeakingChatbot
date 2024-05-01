@@ -22,7 +22,7 @@ namespace SpeakingChatbot
                     VoiceDetected.HandleVoice(mainForm, message);
                 };
 
-                audioDetector.AnalyzeAudio("C:\\Users\\foagr\\Downloads\\ElevenLabs_2024-04-16T05_27_35_Daniel.mp3");
+                // audioDetector.AnalyzeAudio("C:\\Users\\foagr\\Downloads\\ElevenLabs_2024-04-16T05_27_35_Daniel.mp3");
 
                 audioDetector.Dispose();
             });

@@ -21,33 +21,58 @@
 
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            chatBoxBtn = new Button();
+            chatContainer = new Panel();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
-            this.pictureBox1.Location = new System.Drawing.Point(252, 98);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(307, 268);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom; // Set size mode to Zoom
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            pictureBox1.Location = new Point(252, 98);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(307, 268);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // chatBoxBtn
+            // 
+            chatBoxBtn.Location = new Point(664, 12);
+            chatBoxBtn.Name = "chatBoxBtn";
+            chatBoxBtn.Size = new Size(124, 49);
+            chatBoxBtn.TabIndex = 1;
+            chatBoxBtn.Text = "chatbox";
+            chatBoxBtn.UseVisualStyleBackColor = true;
+            chatBoxBtn.Click += button1_Click;
+            // 
+            // chatContainer
+            // 
+            chatContainer.BackColor = Color.Transparent;
+            chatContainer.Location = new Point(12, 67);
+            chatContainer.Name = "chatContainer";
+            chatContainer.Size = new Size(776, 371);
+            chatContainer.TabIndex = 2;
+            chatContainer.Visible = false;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(chatContainer);
+            Controls.Add(chatBoxBtn);
+            Controls.Add(pictureBox1);
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private PictureBox pictureBox1;
+        private Button chatBoxBtn;
+        private Panel chatContainer;
     }
 }
