@@ -13,7 +13,8 @@ namespace SpeakingChatbot {
             Console.WriteLine(message);
 
             if (message == "Voice detected!" && firstWord == words) {
-                Image detectedImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\MukaKoJPG\\MukaKoJPG\\assets\\IMG_20240415_195609_317.jpg");
+                //Image detectedImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\MukaKoJPG\\MukaKoJPG\\assets\\IMG_20240415_195609_317.jpg");
+                Image detectedImage = Image.FromFile("..\\..\\..\\assets\\IMG_20240415_195609_317.jpg");
                 mainForm.SetPictureBoxImage(detectedImage);
 
                 try {
@@ -26,7 +27,8 @@ namespace SpeakingChatbot {
                             Timer timer = new Timer();
                             timer.Interval = remainingTime;
                             timer.Tick += (s, e) => {
-                                Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
+                                //Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
+                                Image originalImage = Image.FromFile("..\\..\\..\\assets\\IMG_20240415_195608_239.jpg");
                                 mainForm.SetPictureBoxImage(originalImage);
                                 timer.Stop();
                             };
@@ -40,7 +42,8 @@ namespace SpeakingChatbot {
                 } catch (Exception) {
                 }
             } else {
-                Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
+                //Image originalImage = Image.FromFile("C:\\Users\\foagr\\source\\repos\\SpeakingChatbot\\SpeakingChatbot\\assets\\IMG_20240415_195608_239.jpg");
+                Image originalImage = Image.FromFile(".\\assets\\IMG_20240415_195608_239.jpg");
                 mainForm.SetPictureBoxImage(originalImage);
             }
 

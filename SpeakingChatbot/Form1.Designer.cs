@@ -93,6 +93,7 @@ namespace SpeakingChatbot {
             chatContainer.Name = "chatContainer";
             chatContainer.Size = new Size(776, 403);
             chatContainer.TabIndex = 8;
+            chatContainer.Hide();
             // 
             // Form1
             // 

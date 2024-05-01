@@ -22,10 +22,10 @@ internal static class Program {
             string wordDapat = words[0];
             string firstWord = words.Length > 0 ? words[0] : "";
 
-            string wavFilePath = @"C:\Users\foagr\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".wav";
+            string wavFilePath = @"..\\..\\..\\assets\" + firstWord + ".wav";
             SynthesizeTextToSpeech(userInput, wavFilePath);
 
-            string mp3FilePath = @"C:\Users\foagr\source\repos\SpeakingChatbot\SpeakingChatbot\assets\" + firstWord + ".mp3";
+            string mp3FilePath = @"..\\..\\..\\assets\" + firstWord + ".mp3";
             Converter.ConvertWavToMp3(wavFilePath, mp3FilePath);
 
             string wordDapatCopy = wordDapat;
