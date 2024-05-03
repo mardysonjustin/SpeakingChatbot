@@ -1,4 +1,5 @@
-﻿using SpeakingChatbot.Models;
+﻿using SpeakingChatbot.Bot;
+using SpeakingChatbot.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,10 +14,9 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 
-namespace SpeakingChatbot.chatUserControl
-{
-    public partial class ChatUserControl : UserControl
-    {
+namespace SpeakingChatbot.chatUserControl {
+    public partial class ChatUserControl : UserControl {
+
         public ChatBoxInfo chatbox_info;
 
         public string Msg { get; set; }
@@ -106,9 +106,7 @@ namespace SpeakingChatbot.chatUserControl
         }
 
 
-
-        public ChatUserControl(ChatBoxInfo _chatbox_info)
-        {
+        public ChatUserControl(ChatBoxInfo _chatbox_info) {
             InitializeComponent();
 
             chatbox_info = _chatbox_info;
@@ -120,10 +118,8 @@ namespace SpeakingChatbot.chatUserControl
         }
 
 
-        public void addMessage(IChatModel textModel)
-        {
-            var chatMsg = new ChatMsgUserControl(textModel)
-            {
+        public void addMessage(IChatModel textModel) {
+            var chatMsg = new ChatMsgUserControl(textModel) {
                 Name = "chatMsg" + chatBoxPanel.Controls.Count,
                 Dock = DockStyle.Top
             };
@@ -138,19 +134,52 @@ namespace SpeakingChatbot.chatUserControl
 
         }
 
+
+        private string checkMsgInput(string msg) {
+            string[] calledWaifu;
+            string msgToBot = "";
+
+            if (msg.Contains("@waifu")) {
+                // wake waifu
+                Debug.WriteLine("waifu in");
+                calledWaifu = new string[2];
+                calledWaifu = msg.Split(" ", 2, System.StringSplitOptions.RemoveEmptyEntries);
+
+                try {
+                    // "@waifu"
+                    Debug.WriteLine(calledWaifu[0]);
+                    // question
+                    Debug.WriteLine(calledWaifu[1]);
+
+                    msgToBot = calledWaifu[1];
+                } catch (Exception ex) {
+                    // call waifu lang no msg
+                    Debug.WriteLine("No question");
+
+                    string[] wakeWaifu = { "hi", "hello", "hey", "you there? ", "gemini" };
+                    Random random = new Random();
+                    int randomIndex = random.Next(0, wakeWaifu.Length);
+                    Debug.WriteLine(wakeWaifu[randomIndex]);
+
+                    msgToBot = wakeWaifu[randomIndex];
+                }
+
+                return msgToBot;
+            }
+            return msg;
+        }
+
         // add text to db
-        private void sendBtn_Click(object sender, EventArgs e)
-        {
+        private async void sendBtn_Click(object sender, EventArgs e) {
             string toUser = userNameLbl.Text;
             string msg = msgBox.Text;
+            msg.Trim();
 
             IChatModel chatModel = null;
             TextChatModel textModel = null;
 
-            if (!string.IsNullOrWhiteSpace(msg))
-            {
-                textModel = new TextChatModel()
-                {
+            if (!string.IsNullOrWhiteSpace(msg)) {
+                textModel = new TextChatModel() {
                     Inbound = false,
                     Read = true,
                     Time = DateTime.Now,
@@ -159,28 +188,22 @@ namespace SpeakingChatbot.chatUserControl
                 };
             }
 
-            try
-            {
+            try {
                 // img
-                if (chatModel != null)
-                {
+                if (chatModel != null) {
                     addMessage(chatModel);
                     //cancelAttachment(null, null);
                 }
 
                 // chat 
-                if (textModel != null)
-                {
+                if (textModel != null) {
                     addMessage(textModel);
                     msgBox.Text = string.Empty;
                     connectClient.SendMsgToServer(msg);
                 }
 
-            }
-            catch (Exception err)
-            {
-                textModel = new TextChatModel()
-                {
+            } catch (Exception err) {
+                textModel = new TextChatModel() {
                     Inbound = false,
                     Read = true,
                     Time = DateTime.Now,
@@ -189,10 +212,17 @@ namespace SpeakingChatbot.chatUserControl
                 };
                 addMessage(textModel);
             }
+
+            /*            // if yung msg is nagcocontain ng @waifu
+                        msgToBot = checkMsgInput(msg);
+                        if (msgToBot != null) {
+                            msgFromBot = await GeminiAPI.SendRequestAndGetResponse(msgToBot);
+                        }
+
+                        Debug.WriteLine("Message from Gemini", msgFromBot);*/
         }
 
-        private void attachBtn_Click(object sender, EventArgs e)
-        {
+        private void attachBtn_Click(object sender, EventArgs e) {
 
         }
     }

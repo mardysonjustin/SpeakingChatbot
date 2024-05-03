@@ -21,7 +21,7 @@ internal static class Program {
             string[] words = userInput.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string wordDapat = words[0];
             string firstWord = words.Length > 0 ? words[0] : "";
-
+            
             string wavFilePath = @"..\\..\\..\\assets\" + firstWord + ".wav";
             SynthesizeTextToSpeech(userInput, wavFilePath);
 

@@ -64,7 +64,6 @@ namespace SpeakingChatbot {
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(397, 27);
             textBox1.TabIndex = 5;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button2
             // 
@@ -89,11 +88,11 @@ namespace SpeakingChatbot {
             // 
             // chatContainer
             // 
-            chatContainer.Location = new Point(12, 47);
+            chatContainer.Location = new Point(12, 45);
             chatContainer.Name = "chatContainer";
-            chatContainer.Size = new Size(776, 403);
+            chatContainer.Size = new Size(776, 405);
             chatContainer.TabIndex = 8;
-            chatContainer.Hide();
+            chatContainer.Visible = false;
             // 
             // Form1
             // 

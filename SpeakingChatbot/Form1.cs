@@ -127,10 +127,6 @@ namespace SpeakingChatbot {
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-
-        }
-
         private void clearText() {
             richTextBox1.Clear();
         }
