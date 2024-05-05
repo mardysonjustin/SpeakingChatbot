@@ -78,7 +78,7 @@ namespace SpeakingChatbot {
             // 
             // chatBtn
             // 
-            chatBtn.Location = new Point(12, 12);
+            chatBtn.Location = new Point(11, 12);
             chatBtn.Name = "chatBtn";
             chatBtn.Size = new Size(94, 29);
             chatBtn.TabIndex = 7;
@@ -88,7 +88,7 @@ namespace SpeakingChatbot {
             // 
             // chatContainer
             // 
-            chatContainer.Location = new Point(12, 45);
+            chatContainer.Location = new Point(11, 45);
             chatContainer.Name = "chatContainer";
             chatContainer.Size = new Size(776, 405);
             chatContainer.TabIndex = 8;
@@ -108,6 +108,7 @@ namespace SpeakingChatbot {
             Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Speaking Chatbot";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
