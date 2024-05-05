@@ -70,6 +70,10 @@ namespace ChatServer {
         // send to all
         public static void BroadcastMsg(string msg, string SenderUID) {
             foreach(var client in clients) {
+                Console.WriteLine(SenderUID);
+
+
+
                 if (client.UID.ToString() != SenderUID) {
                     var msgPacket = new Net.IO.PacketBuilder();
                     msgPacket.WriteOpCode(5);

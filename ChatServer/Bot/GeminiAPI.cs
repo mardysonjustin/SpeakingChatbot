@@ -29,7 +29,7 @@ namespace ChatServer.Bot {
             }}";
 
             using (var client = new HttpClient()) {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyA4_FnJD9hPi4e7hh-cV6XEHXbyHUezycE");
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyA4_FnJD9hPi4e7hh-cV6XEHXbyHUezycE");
                 request.Content = new StringContent(jsonBody, Encoding.UTF8);
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
