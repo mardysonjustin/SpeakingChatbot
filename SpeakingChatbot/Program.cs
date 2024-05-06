@@ -14,10 +14,11 @@ internal static class Program {
     [STAThread]
     static void Main() {
         ApplicationConfiguration.Initialize();
-        Form1 mainForm = new Form1();
+        // Form1 mainForm = new Form1();
+        Chavatar mainForm = new Chavatar();
         AudioDetector audioDetector = new AudioDetector();
 
-        mainForm.UserInputEntered += (sender, userInput) => {
+        /*mainForm.UserInputEntered += (sender, userInput) => {
             string[] words = userInput.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string wordDapat = words[0];
             string firstWord = words.Length > 0 ? words[0] : "";
@@ -43,7 +44,7 @@ internal static class Program {
             File.Delete(wavFilePath);
             File.Delete(mp3FilePath);
             audioDetector.Dispose();
-        };
+        };*/
         Application.Run(mainForm);
     }
 

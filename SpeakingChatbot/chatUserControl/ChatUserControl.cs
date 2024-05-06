@@ -1,5 +1,4 @@
-﻿using SpeakingChatbot.Bot;
-using SpeakingChatbot.Models;
+﻿using SpeakingChatbot.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -134,41 +133,6 @@ namespace SpeakingChatbot.chatUserControl {
 
         }
 
-
-        private string checkMsgInput(string msg) {
-            string[] calledWaifu;
-            string msgToBot = "";
-
-            if (msg.Contains("@waifu")) {
-                // wake waifu
-                Debug.WriteLine("waifu in");
-                calledWaifu = new string[2];
-                calledWaifu = msg.Split(" ", 2, System.StringSplitOptions.RemoveEmptyEntries);
-
-                try {
-                    // "@waifu"
-                    Debug.WriteLine(calledWaifu[0]);
-                    // question
-                    Debug.WriteLine(calledWaifu[1]);
-
-                    msgToBot = calledWaifu[1];
-                } catch (Exception ex) {
-                    // call waifu lang no msg
-                    Debug.WriteLine("No question");
-
-                    string[] wakeWaifu = { "hi", "hello", "hey", "you there? ", "gemini" };
-                    Random random = new Random();
-                    int randomIndex = random.Next(0, wakeWaifu.Length);
-                    Debug.WriteLine(wakeWaifu[randomIndex]);
-
-                    msgToBot = wakeWaifu[randomIndex];
-                }
-
-                return msgToBot;
-            }
-            return msg;
-        }
-
         // add text to db
         private async void sendBtn_Click(object sender, EventArgs e) {
             string toUser = userNameLbl.Text;
@@ -213,13 +177,6 @@ namespace SpeakingChatbot.chatUserControl {
                 addMessage(textModel);
             }
 
-            /*            // if yung msg is nagcocontain ng @waifu
-                        msgToBot = checkMsgInput(msg);
-                        if (msgToBot != null) {
-                            msgFromBot = await GeminiAPI.SendRequestAndGetResponse(msgToBot);
-                        }
-
-                        Debug.WriteLine("Message from Gemini", msgFromBot);*/
         }
 
         private void attachBtn_Click(object sender, EventArgs e) {

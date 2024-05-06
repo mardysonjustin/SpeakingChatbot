@@ -61,6 +61,7 @@ namespace ChatServer {
                                 Console.WriteLine(msgFromGemini);
                                 Server.BroadcastMsg(msgFromGemini, "waifu");
                             }
+
                             break;
                         default:
                             break;
