@@ -24,7 +24,7 @@ namespace SpeakingChatbot.UserControls {
         private void chatbotTbl_Click(object sender, EventArgs e) {
 
         }
-        
+
 
         // go to chatUC
         private void chatTbl_Click(object sender, EventArgs e) {

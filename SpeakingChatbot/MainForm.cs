@@ -28,9 +28,13 @@ namespace SpeakingChatbot {
                         loginUC.Dock = DockStyle.Fill;
                         MainPanel.Controls.Add(loginUC);*/
 
-            SignUpUC signUpUC = new SignUpUC();
+/*            SignUpUC signUpUC = new SignUpUC();
             signUpUC.Dock = DockStyle.Fill;
-            MainPanel.Controls.Add(signUpUC);
+            MainPanel.Controls.Add(signUpUC);*/
+
+            ChatbotUC chatbotUC = new ChatbotUC();
+            chatbotUC.Dock = DockStyle.Fill;
+            MainPanel.Controls.Add(chatbotUC);
         }
     }
 }

@@ -262,6 +262,7 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.Transparent;
             BackgroundImage = Properties.Resources.main_menu;
+            BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(mainMenuTbl);
             Name = "MainMenuUC";
             Size = new Size(1163, 720);

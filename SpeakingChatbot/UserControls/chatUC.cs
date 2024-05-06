@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
-    public partial class ChatbotUC : UserControl {
-        public ChatbotUC() {
+    public partial class chatUC : UserControl {
+        public chatUC() {
             InitializeComponent();
-            chatPanel.BackColor = Color.FromArgb(200, Color.Black);
         }
     }
 }
