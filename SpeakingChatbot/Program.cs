@@ -47,8 +47,11 @@ internal static class Program {
         Application.Run(mainForm);
     }
 
-    static void SynthesizeTextToSpeech(string text, string filePath) {
-        using (SpeechSynthesizer synth = new SpeechSynthesizer()) {
+    static void SynthesizeTextToSpeech(string text, string filePath)
+    {
+        using (SpeechSynthesizer synth = new SpeechSynthesizer())
+        {
+            synth.SelectVoiceByHints(VoiceGender.Female);
             synth.SetOutputToWaveFile(filePath, new SpeechAudioFormatInfo(32000, AudioBitsPerSample.Sixteen, AudioChannel.Mono));
             PromptBuilder builder = new PromptBuilder();
             builder.AppendText(text);
