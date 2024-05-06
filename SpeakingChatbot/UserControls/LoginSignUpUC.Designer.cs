@@ -23,124 +23,139 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            splitLoginUC = new SplitContainer();
             loginTbl = new TableLayoutPanel();
+            titleLbl = new Label();
+            keyLbl = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
             loginBtn = new Button();
-            signUpTbl = new TableLayoutPanel();
             signUpBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)splitLoginUC).BeginInit();
-            splitLoginUC.Panel1.SuspendLayout();
-            splitLoginUC.Panel2.SuspendLayout();
-            splitLoginUC.SuspendLayout();
             loginTbl.SuspendLayout();
-            signUpTbl.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // splitLoginUC
-            // 
-            splitLoginUC.Dock = DockStyle.Fill;
-            splitLoginUC.Location = new Point(0, 0);
-            splitLoginUC.Name = "splitLoginUC";
-            // 
-            // splitLoginUC.Panel1
-            // 
-            splitLoginUC.Panel1.Controls.Add(loginTbl);
-            // 
-            // splitLoginUC.Panel2
-            // 
-            splitLoginUC.Panel2.Controls.Add(signUpTbl);
-            splitLoginUC.Size = new Size(720, 480);
-            splitLoginUC.SplitterDistance = 386;
-            splitLoginUC.SplitterWidth = 8;
-            splitLoginUC.TabIndex = 0;
             // 
             // loginTbl
             // 
-            loginTbl.ColumnCount = 3;
-            loginTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 92.59259F));
-            loginTbl.ColumnStyles.Add(new ColumnStyle());
-            loginTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.40740728F));
-            loginTbl.Controls.Add(loginBtn, 1, 1);
+            loginTbl.ColumnCount = 1;
+            loginTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            loginTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            loginTbl.Controls.Add(titleLbl, 0, 0);
+            loginTbl.Controls.Add(keyLbl, 0, 2);
+            loginTbl.Controls.Add(tableLayoutPanel1, 0, 1);
             loginTbl.Dock = DockStyle.Fill;
             loginTbl.Location = new Point(0, 0);
             loginTbl.Name = "loginTbl";
             loginTbl.RowCount = 3;
-            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            loginTbl.RowStyles.Add(new RowStyle());
-            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            loginTbl.Size = new Size(386, 480);
+            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            loginTbl.Size = new Size(720, 480);
             loginTbl.TabIndex = 0;
+            // 
+            // titleLbl
+            // 
+            titleLbl.AutoSize = true;
+            titleLbl.BackColor = Color.Transparent;
+            titleLbl.Dock = DockStyle.Fill;
+            titleLbl.Font = new Font("Segoe UI", 40.2F, FontStyle.Regular, GraphicsUnit.Point);
+            titleLbl.ForeColor = Color.Black;
+            titleLbl.Location = new Point(3, 0);
+            titleLbl.Name = "titleLbl";
+            titleLbl.Size = new Size(714, 120);
+            titleLbl.TabIndex = 0;
+            titleLbl.Text = "CHAVATAR";
+            titleLbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // keyLbl
+            // 
+            keyLbl.AutoSize = true;
+            keyLbl.Dock = DockStyle.Fill;
+            keyLbl.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            keyLbl.ForeColor = Color.DarkGray;
+            keyLbl.Location = new Point(3, 336);
+            keyLbl.Name = "keyLbl";
+            keyLbl.Size = new Size(714, 144);
+            keyLbl.TabIndex = 1;
+            keyLbl.Text = "PRESS ANY KEY TO CONTINUE";
+            keyLbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.5F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.5F));
+            tableLayoutPanel1.Controls.Add(signUpBtn, 3, 1);
+            tableLayoutPanel1.Controls.Add(loginBtn, 1, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(3, 123);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel1.Size = new Size(714, 210);
+            tableLayoutPanel1.TabIndex = 2;
             // 
             // loginBtn
             // 
             loginBtn.AutoSize = true;
             loginBtn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            loginBtn.Dock = DockStyle.Right;
+            loginBtn.FlatStyle = FlatStyle.Flat;
             loginBtn.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            loginBtn.Location = new Point(208, 201);
+            loginBtn.ForeColor = Color.White;
+            loginBtn.Location = new Point(167, 63);
             loginBtn.Margin = new Padding(0);
             loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(161, 77);
+            loginBtn.Size = new Size(185, 84);
             loginBtn.TabIndex = 0;
-            loginBtn.Text = "Login";
+            loginBtn.Text = "LOGIN";
             loginBtn.UseVisualStyleBackColor = true;
-            // 
-            // signUpTbl
-            // 
-            signUpTbl.ColumnCount = 3;
-            signUpTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.407407F));
-            signUpTbl.ColumnStyles.Add(new ColumnStyle());
-            signUpTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 92.59259F));
-            signUpTbl.Controls.Add(signUpBtn, 1, 1);
-            signUpTbl.Dock = DockStyle.Fill;
-            signUpTbl.Location = new Point(0, 0);
-            signUpTbl.Name = "signUpTbl";
-            signUpTbl.RowCount = 3;
-            signUpTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            signUpTbl.RowStyles.Add(new RowStyle());
-            signUpTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            signUpTbl.Size = new Size(326, 480);
-            signUpTbl.TabIndex = 0;
             // 
             // signUpBtn
             // 
             signUpBtn.AutoSize = true;
             signUpBtn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            signUpBtn.BackColor = Color.Transparent;
+            signUpBtn.Dock = DockStyle.Left;
+            signUpBtn.FlatStyle = FlatStyle.Flat;
             signUpBtn.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            signUpBtn.Location = new Point(3, 201);
+            signUpBtn.ForeColor = Color.White;
+            signUpBtn.Location = new Point(362, 66);
             signUpBtn.Name = "signUpBtn";
-            signUpBtn.Size = new Size(18, 77);
-            signUpBtn.TabIndex = 0;
-            signUpBtn.Text = "Sign Up";
-            signUpBtn.UseVisualStyleBackColor = true;
+            signUpBtn.Size = new Size(214, 78);
+            signUpBtn.TabIndex = 1;
+            signUpBtn.Text = "SIGNUP";
+            signUpBtn.TextAlign = ContentAlignment.MiddleLeft;
+            signUpBtn.UseVisualStyleBackColor = false;
             // 
-            // LoginUC
+            // LoginSignUpUC
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            BackColor = Color.Black;
-            BackgroundImage = Properties.Resources.cat2;
+            BackColor = Color.Transparent;
+            BackgroundImage = Properties.Resources.start2;
             BackgroundImageLayout = ImageLayout.Stretch;
-            Controls.Add(splitLoginUC);
-            Name = "LoginUC";
+            Controls.Add(loginTbl);
+            Name = "LoginSignUpUC";
             Size = new Size(720, 480);
-            splitLoginUC.Panel1.ResumeLayout(false);
-            splitLoginUC.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)splitLoginUC).EndInit();
-            splitLoginUC.ResumeLayout(false);
             loginTbl.ResumeLayout(false);
             loginTbl.PerformLayout();
-            signUpTbl.ResumeLayout(false);
-            signUpTbl.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private SplitContainer splitLoginUC;
         private TableLayoutPanel loginTbl;
-        private Button loginBtn;
-        private TableLayoutPanel signUpTbl;
+        private Label titleLbl;
+        private Label keyLbl;
+        private TableLayoutPanel tableLayoutPanel1;
         private Button signUpBtn;
+        private Button loginBtn;
     }
 }

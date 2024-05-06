@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
-    public partial class SignUp : UserControl {
-        public SignUp() {
+    public partial class SignUpUC : UserControl {
+        public SignUpUC() {
             InitializeComponent();
         }
     }

@@ -39,18 +39,16 @@ namespace SpeakingChatbot.UserControls {
             welcomeTblPanel.BackColor = Color.Transparent;
             welcomeTblPanel.ColumnCount = 1;
             welcomeTblPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            welcomeTblPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 18F));
             welcomeTblPanel.Controls.Add(keyLbl, 0, 2);
             welcomeTblPanel.Controls.Add(titleLbl, 0, 0);
             welcomeTblPanel.Dock = DockStyle.Fill;
             welcomeTblPanel.Location = new Point(0, 0);
-            welcomeTblPanel.Margin = new Padding(3, 2, 3, 2);
             welcomeTblPanel.Name = "welcomeTblPanel";
             welcomeTblPanel.RowCount = 3;
             welcomeTblPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             welcomeTblPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             welcomeTblPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            welcomeTblPanel.Size = new Size(1326, 448);
+            welcomeTblPanel.Size = new Size(1515, 597);
             welcomeTblPanel.TabIndex = 4;
             // 
             // keyLbl
@@ -59,40 +57,38 @@ namespace SpeakingChatbot.UserControls {
             keyLbl.BackColor = Color.Transparent;
             keyLbl.Dock = DockStyle.Fill;
             keyLbl.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            keyLbl.ForeColor = Color.FromArgb(192, 0, 0);
-            keyLbl.Location = new Point(3, 313);
+            keyLbl.ForeColor = Color.White;
+            keyLbl.Location = new Point(3, 417);
             keyLbl.Name = "keyLbl";
-            keyLbl.Size = new Size(1320, 135);
+            keyLbl.Size = new Size(1509, 180);
             keyLbl.TabIndex = 2;
-            keyLbl.Text = "Press any key to Continue";
+            keyLbl.Text = "PRESS ANY KEY TO CONTINUE";
             keyLbl.TextAlign = ContentAlignment.MiddleCenter;
-            keyLbl.Click += keyLbl_Click;
             // 
             // titleLbl
             // 
-            titleLbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             titleLbl.BackColor = Color.Transparent;
+            titleLbl.Dock = DockStyle.Fill;
             titleLbl.Font = new Font("Segoe UI", 40F, FontStyle.Regular, GraphicsUnit.Point);
-            titleLbl.ForeColor = Color.FromArgb(192, 0, 0);
+            titleLbl.ForeColor = Color.Black;
             titleLbl.Location = new Point(3, 0);
             titleLbl.Name = "titleLbl";
-            titleLbl.Size = new Size(1320, 112);
+            titleLbl.Size = new Size(1509, 149);
             titleLbl.TabIndex = 3;
-            titleLbl.Text = "Chavatar";
+            titleLbl.Text = "CHAVATAR";
             titleLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // WelcomeUC
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            BackgroundImage = Properties.Resources.cat2;
+            BackgroundImage = Properties.Resources.start1;
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(welcomeTblPanel);
             DoubleBuffered = true;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "WelcomeUC";
-            Size = new Size(1326, 448);
+            Size = new Size(1515, 597);
             welcomeTblPanel.ResumeLayout(false);
             welcomeTblPanel.PerformLayout();
             ResumeLayout(false);

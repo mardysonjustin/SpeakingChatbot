@@ -1,5 +1,5 @@
 ﻿namespace SpeakingChatbot.UserControls {
-    partial class SignUp {
+    partial class chatbotUC {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

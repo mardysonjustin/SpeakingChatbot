@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Drawing.Text;
+
 namespace SpeakingChatbot {
     public partial class Chavatar : Form {
         public Chavatar() {
@@ -22,13 +24,13 @@ namespace SpeakingChatbot {
                         loginSignUpUC.Dock = DockStyle.Fill;
                         MainPanel.Controls.Add(loginSignUpUC);*/
 
-            LoginUC loginUC = new LoginUC();
-            loginUC.Dock = DockStyle.Fill;
-            MainPanel.Controls.Add(loginUC);
+            /*            LoginUC loginUC = new LoginUC();
+                        loginUC.Dock = DockStyle.Fill;
+                        MainPanel.Controls.Add(loginUC);*/
 
-/*            SignUpUC signUpUC = new SignUpUC();
+            SignUpUC signUpUC = new SignUpUC();
             signUpUC.Dock = DockStyle.Fill;
-            MainPanel.Controls.Add(signUpUC);*/
+            MainPanel.Controls.Add(signUpUC);
         }
     }
 }

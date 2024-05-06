@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Drawing.Text;
+
 namespace SpeakingChatbot.UserControls {
     public partial class WelcomeUC : UserControl {
         public WelcomeUC() {
             InitializeComponent();
         }
 
-        private void keyLbl_Click(object sender, EventArgs e) {
-
-        }
     }
+
+
 }
