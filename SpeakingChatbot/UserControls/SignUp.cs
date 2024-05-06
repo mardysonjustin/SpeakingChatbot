@@ -9,13 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
-    public partial class WelcomeUC : UserControl {
-        public WelcomeUC() {
+    public partial class SignUp : UserControl {
+        public SignUp() {
             InitializeComponent();
-        }
-
-        private void keyLbl_Click(object sender, EventArgs e) {
-
         }
     }
 }

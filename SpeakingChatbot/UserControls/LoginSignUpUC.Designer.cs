@@ -120,6 +120,7 @@
             AutoSize = true;
             BackColor = Color.Black;
             BackgroundImage = Properties.Resources.cat2;
+            BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(splitLoginUC);
             Name = "LoginUC";
             Size = new Size(720, 480);
