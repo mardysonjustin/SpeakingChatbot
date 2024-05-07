@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using MySql.Data.MySqlClient;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace SpeakingChatbot {
@@ -11,13 +13,16 @@ namespace SpeakingChatbot {
 
         public event EventHandler<string> UserInputEntered;
 
+        private MySqlConnection connection;
+        private string connectionString = "server=localhost;user=root;database=chats;password=sqlOMNIVERSE01;";
+
         public Form1() {
             InitializeComponent();
+            InitializeDatabaseConnection();
         }
 
 
         bool chatBoxIsOpen = false;
-
 
 
         private void chatBtn_Click(object sender, EventArgs e) {
@@ -65,40 +70,49 @@ namespace SpeakingChatbot {
         }
 
         private async Task<string> SendRequestAndGetResponse(string userInput) {
+            string combinedInput = previousConversation + userInput;
+
             string jsonBody = $@"{{
-                ""contents"": [
-                    {{
-                        ""role"": """",
-                        ""parts"": [
-                            {{
-                                ""text"": ""{userInput}""
-                            }}
-                        ]
-                    }}
-                ],
-                ""generationConfig"": {{
-                    ""temperature"": 0.9,
-                    ""topK"": 50,
-                    ""topP"": 0.95,
-                    ""maxOutputTokens"": 4096,
-                    ""stopSequences"": []
-                }},
-                ""safetySettings"": [
-
-                ]
-            }}";
-
-            using (var client = new HttpClient()) {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyA4_FnJD9hPi4e7hh-cV6XEHXbyHUezycE");
+                                ""contents"": [
+                                    {{
+                                        ""role"": """",
+                                        ""parts"": [
+                                            {{
+                                                ""text"": ""{combinedInput}""
+                                            }}
+                                        ]
+                                    }}
+                                ],
+                                ""generationConfig"": {{
+                                    ""temperature"": 0.9,
+                                    ""topK"": 50,
+                                    ""topP"": 0.95,
+                                    ""maxOutputTokens"": 4096,
+                                    ""stopSequences"": []
+                                }},
+                                ""safetySettings"": [
+            
+                                ]
+                            }}";
+            
+            using (var client = new HttpClient())
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyA4_FnJD9hPi4e7hh-cV6XEHXbyHUezycE");
                 request.Content = new StringContent(jsonBody, Encoding.UTF8);
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
+            
                 var response = await client.SendAsync(request).ConfigureAwait(false);
-
-                if (response.IsSuccessStatusCode) {
+            
+                if (response.IsSuccessStatusCode)
+                {
                     string responseBody = await response.Content.ReadAsStringAsync();
+                    
+                    InsertConversation(combinedInput, responseBody);
+            
                     return responseBody.Substring(responseBody.IndexOf("\"text\": \"") + 9, responseBody.IndexOf("\"", responseBody.IndexOf("\"text\": \"") + 10) - responseBody.IndexOf("\"text\": \"") - 9);
-                } else {
+                }
+                else
+                {
                     MessageBox.Show("Error1");
                     return $"Error: {response.StatusCode} - {response.ReasonPhrase}";
                 }
@@ -111,21 +125,59 @@ namespace SpeakingChatbot {
         private void richTextBox1_TextChanged(object sender, EventArgs e) {
 
         }
+        
+        private string RetrievePreviousConversation(){
+            string previousConversation = string.Empty;
 
+            return previousConversation;
+        }
+
+        private void InsertConversation(string userInput, string aiResponse) {
+            string query = "INSERT INTO conversations (UserInput, BotResponse) VALUES (@UserInput, @BotResponse)"; // change depending on column names
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserInput", userInput);
+            command.Parameters.AddWithValue("@BotResponse", aiResponse);
+        
+            try
+            {
+                command.ExecuteNonQuery();
+                MessageBox.Show("Conversation inserted into the database.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error inserting conversation data: " + ex.Message);
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e) {
+            base.OnFormClosing(e);
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+        }
+        
         private async void button2_Click(object sender, EventArgs e) {
-            string userInput = textBox1.Text;
+           string userInput = textBox1.Text;
 
-            if (!string.IsNullOrEmpty(userInput)) {
+            if (!string.IsNullOrEmpty(userInput))
+            {
                 clearText();
-
-                string output = await SendRequestAndGetResponse(userInput);
-
+            
+                string previousConversation = RetrievePreviousConversation();
+            
+                string output = await SendRequestAndGetResponse(userInput, previousConversation);
+            
                 output = output.Replace("\\n", Environment.NewLine)
                                .Replace("\n", "")
                                .Replace("**", "");
-
+            
                 richTextBox1.AppendText(output);
-            } else {
+            
+                InsertConversation(userInput, output);
+            }
+            else
+            {
                 MessageBox.Show("Input cannot be empty.", "Error");
             }
         }
