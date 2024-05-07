@@ -27,9 +27,15 @@ namespace SpeakingChatbot.UserControls {
         /// </summary>
         private void InitializeComponent() {
             welcomeTblPanel = new TableLayoutPanel();
-            keyLbl = new Label();
-            titleLbl = new Label();
+            titleTbl = new TableLayoutPanel();
+            titleLbl = new PictureBox();
+            continueTbl = new TableLayoutPanel();
+            continueLbl = new PictureBox();
             welcomeTblPanel.SuspendLayout();
+            titleTbl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)titleLbl).BeginInit();
+            continueTbl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)continueLbl).BeginInit();
             SuspendLayout();
             // 
             // welcomeTblPanel
@@ -39,8 +45,8 @@ namespace SpeakingChatbot.UserControls {
             welcomeTblPanel.BackColor = Color.Transparent;
             welcomeTblPanel.ColumnCount = 1;
             welcomeTblPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            welcomeTblPanel.Controls.Add(keyLbl, 0, 2);
-            welcomeTblPanel.Controls.Add(titleLbl, 0, 0);
+            welcomeTblPanel.Controls.Add(titleTbl, 0, 0);
+            welcomeTblPanel.Controls.Add(continueTbl, 0, 2);
             welcomeTblPanel.Dock = DockStyle.Fill;
             welcomeTblPanel.Location = new Point(0, 0);
             welcomeTblPanel.Name = "welcomeTblPanel";
@@ -48,35 +54,71 @@ namespace SpeakingChatbot.UserControls {
             welcomeTblPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             welcomeTblPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             welcomeTblPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            welcomeTblPanel.Size = new Size(1515, 597);
+            welcomeTblPanel.Size = new Size(1515, 600);
             welcomeTblPanel.TabIndex = 4;
+            welcomeTblPanel.Click += welcomeTblPanel_Click;
             // 
-            // keyLbl
+            // titleTbl
             // 
-            keyLbl.AutoSize = true;
-            keyLbl.BackColor = Color.Transparent;
-            keyLbl.Dock = DockStyle.Fill;
-            keyLbl.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            keyLbl.ForeColor = Color.White;
-            keyLbl.Location = new Point(3, 417);
-            keyLbl.Name = "keyLbl";
-            keyLbl.Size = new Size(1509, 180);
-            keyLbl.TabIndex = 2;
-            keyLbl.Text = "PRESS ANY KEY TO CONTINUE";
-            keyLbl.TextAlign = ContentAlignment.MiddleCenter;
+            titleTbl.AutoSize = true;
+            titleTbl.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            titleTbl.ColumnCount = 3;
+            titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18F));
+            titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64F));
+            titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18F));
+            titleTbl.Controls.Add(titleLbl, 1, 1);
+            titleTbl.Dock = DockStyle.Fill;
+            titleTbl.Location = new Point(0, 0);
+            titleTbl.Margin = new Padding(0);
+            titleTbl.Name = "titleTbl";
+            titleTbl.RowCount = 3;
+            titleTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            titleTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+            titleTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            titleTbl.Size = new Size(1515, 150);
+            titleTbl.TabIndex = 3;
             // 
             // titleLbl
             // 
-            titleLbl.BackColor = Color.Transparent;
             titleLbl.Dock = DockStyle.Fill;
-            titleLbl.Font = new Font("Segoe UI", 40F, FontStyle.Regular, GraphicsUnit.Point);
-            titleLbl.ForeColor = Color.Black;
-            titleLbl.Location = new Point(3, 0);
+            titleLbl.Image = Properties.Resources.CHAVATARtitle;
+            titleLbl.Location = new Point(272, 22);
+            titleLbl.Margin = new Padding(0);
             titleLbl.Name = "titleLbl";
-            titleLbl.Size = new Size(1509, 149);
-            titleLbl.TabIndex = 3;
-            titleLbl.Text = "CHAVATAR";
-            titleLbl.TextAlign = ContentAlignment.MiddleCenter;
+            titleLbl.Size = new Size(969, 105);
+            titleLbl.SizeMode = PictureBoxSizeMode.StretchImage;
+            titleLbl.TabIndex = 0;
+            titleLbl.TabStop = false;
+            // 
+            // continueTbl
+            // 
+            continueTbl.ColumnCount = 3;
+            continueTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16F));
+            continueTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68F));
+            continueTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16F));
+            continueTbl.Controls.Add(continueLbl, 1, 1);
+            continueTbl.Dock = DockStyle.Fill;
+            continueTbl.Location = new Point(0, 420);
+            continueTbl.Margin = new Padding(0);
+            continueTbl.Name = "continueTbl";
+            continueTbl.RowCount = 3;
+            continueTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
+            continueTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            continueTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
+            continueTbl.Size = new Size(1515, 180);
+            continueTbl.TabIndex = 4;
+            // 
+            // continueLbl
+            // 
+            continueLbl.Dock = DockStyle.Fill;
+            continueLbl.Image = Properties.Resources.clicktocontinue;
+            continueLbl.Location = new Point(242, 63);
+            continueLbl.Margin = new Padding(0);
+            continueLbl.Name = "continueLbl";
+            continueLbl.Size = new Size(1030, 54);
+            continueLbl.SizeMode = PictureBoxSizeMode.StretchImage;
+            continueLbl.TabIndex = 0;
+            continueLbl.TabStop = false;
             // 
             // WelcomeUC
             // 
@@ -88,16 +130,22 @@ namespace SpeakingChatbot.UserControls {
             Controls.Add(welcomeTblPanel);
             DoubleBuffered = true;
             Name = "WelcomeUC";
-            Size = new Size(1515, 597);
+            Size = new Size(1515, 600);
             welcomeTblPanel.ResumeLayout(false);
             welcomeTblPanel.PerformLayout();
+            titleTbl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)titleLbl).EndInit();
+            continueTbl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)continueLbl).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private TableLayoutPanel welcomeTblPanel;
-        private Label keyLbl;
-        private Label titleLbl;
+        private TableLayoutPanel titleTbl;
+        private PictureBox titleLbl;
+        private TableLayoutPanel continueTbl;
+        private PictureBox continueLbl;
     }
 }

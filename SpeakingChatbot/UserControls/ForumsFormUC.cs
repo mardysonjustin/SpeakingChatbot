@@ -9,16 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
-    public partial class ChatUC : UserControl {
+    public partial class ForumsFormUC : UserControl {
+
         public event Action BackBtnClick;
-        public ChatUC() {
+        public ForumsFormUC() {
             InitializeComponent();
-            // avatarPanel.BackColor = Color.FromArgb(200, Color.Black);
-            // chatPanel.BackColor = Color.FromArgb(200, Color.Black);
         }
 
         private void backBtn_Click(object sender, EventArgs e) {
             BackBtnClick?.Invoke();
+        }
+
+        private void submitBtn_Click(object sender, EventArgs e) {
+            BackBtnClick?.Invoke();
+
+            // add data sa db
+        }
+
+        private void addFileBtn_Click(object sender, EventArgs e) {
+            // add file
         }
     }
 }

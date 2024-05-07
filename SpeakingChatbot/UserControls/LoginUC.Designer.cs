@@ -25,18 +25,22 @@
         private void InitializeComponent() {
             loginTbl = new TableLayoutPanel();
             titleTbl = new TableLayoutPanel();
-            titleLbl = new Label();
+            loginLbl = new PictureBox();
             midTbl = new TableLayoutPanel();
-            passwordTextBox = new TextBox();
-            usernameLbl = new Label();
-            usernameTextBox = new TextBox();
-            passwordLbl = new Label();
-            enterTbl = new TableLayoutPanel();
-            button1 = new Button();
+            usernameLbl = new PictureBox();
+            passwordLbl = new PictureBox();
+            usernameTextBox = new RichTextBox();
+            passwordTextBox = new RichTextBox();
+            btmTbl = new TableLayoutPanel();
+            enterBtn = new PictureBox();
             loginTbl.SuspendLayout();
             titleTbl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)loginLbl).BeginInit();
             midTbl.SuspendLayout();
-            enterTbl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)usernameLbl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)passwordLbl).BeginInit();
+            btmTbl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)enterBtn).BeginInit();
             SuspendLayout();
             // 
             // loginTbl
@@ -46,14 +50,14 @@
             loginTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             loginTbl.Controls.Add(titleTbl, 0, 0);
             loginTbl.Controls.Add(midTbl, 0, 1);
-            loginTbl.Controls.Add(enterTbl, 0, 2);
+            loginTbl.Controls.Add(btmTbl, 0, 2);
             loginTbl.Dock = DockStyle.Fill;
             loginTbl.Location = new Point(0, 0);
             loginTbl.Name = "loginTbl";
             loginTbl.RowCount = 3;
-            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333359F));
-            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333359F));
+            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            loginTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
             loginTbl.Size = new Size(1280, 720);
             loginTbl.TabIndex = 0;
             // 
@@ -61,130 +65,128 @@
             // 
             titleTbl.AutoSize = true;
             titleTbl.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            titleTbl.ColumnCount = 2;
+            titleTbl.ColumnCount = 3;
+            titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6F));
+            titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 44F));
             titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            titleTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            titleTbl.Controls.Add(titleLbl, 0, 0);
+            titleTbl.Controls.Add(loginLbl, 1, 1);
             titleTbl.Dock = DockStyle.Fill;
             titleTbl.Location = new Point(3, 3);
             titleTbl.Name = "titleTbl";
-            titleTbl.RowCount = 1;
-            titleTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            titleTbl.Size = new Size(1274, 233);
+            titleTbl.RowCount = 2;
+            titleTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            titleTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+            titleTbl.Size = new Size(1274, 174);
             titleTbl.TabIndex = 0;
             // 
-            // titleLbl
+            // loginLbl
             // 
-            titleLbl.AutoSize = true;
-            titleLbl.Dock = DockStyle.Fill;
-            titleLbl.Font = new Font("Segoe UI", 100F, FontStyle.Regular, GraphicsUnit.Point);
-            titleLbl.ForeColor = Color.White;
-            titleLbl.Location = new Point(3, 0);
-            titleLbl.Name = "titleLbl";
-            titleLbl.Size = new Size(631, 233);
-            titleLbl.TabIndex = 0;
-            titleLbl.Text = "LOGIN";
-            titleLbl.TextAlign = ContentAlignment.MiddleCenter;
+            loginLbl.Dock = DockStyle.Fill;
+            loginLbl.Image = Properties.Resources.loginbutton;
+            loginLbl.Location = new Point(76, 52);
+            loginLbl.Margin = new Padding(0);
+            loginLbl.Name = "loginLbl";
+            loginLbl.Size = new Size(560, 122);
+            loginLbl.SizeMode = PictureBoxSizeMode.StretchImage;
+            loginLbl.TabIndex = 0;
+            loginLbl.TabStop = false;
             // 
             // midTbl
             // 
-            midTbl.ColumnCount = 4;
-            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45F));
-            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            midTbl.Controls.Add(passwordTextBox, 2, 3);
+            midTbl.ColumnCount = 5;
+            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21F));
+            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
+            midTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
             midTbl.Controls.Add(usernameLbl, 1, 1);
-            midTbl.Controls.Add(usernameTextBox, 2, 1);
             midTbl.Controls.Add(passwordLbl, 1, 3);
+            midTbl.Controls.Add(usernameTextBox, 3, 1);
+            midTbl.Controls.Add(passwordTextBox, 3, 3);
             midTbl.Dock = DockStyle.Fill;
-            midTbl.Location = new Point(3, 242);
+            midTbl.Location = new Point(3, 183);
             midTbl.Name = "midTbl";
             midTbl.RowCount = 5;
-            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            midTbl.Size = new Size(1274, 234);
+            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 17F));
+            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 14F));
+            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 17F));
+            midTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 22F));
+            midTbl.Size = new Size(1274, 282);
             midTbl.TabIndex = 3;
-            // 
-            // passwordTextBox
-            // 
-            passwordTextBox.Dock = DockStyle.Fill;
-            passwordTextBox.Font = new Font("Segoe UI", 25.2F, FontStyle.Regular, GraphicsUnit.Point);
-            passwordTextBox.Location = new Point(512, 131);
-            passwordTextBox.Name = "passwordTextBox";
-            passwordTextBox.Size = new Size(567, 63);
-            passwordTextBox.TabIndex = 4;
             // 
             // usernameLbl
             // 
-            usernameLbl.AutoSize = true;
-            usernameLbl.Dock = DockStyle.Right;
-            usernameLbl.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            usernameLbl.ForeColor = Color.Black;
-            usernameLbl.Location = new Point(313, 35);
+            usernameLbl.Dock = DockStyle.Fill;
+            usernameLbl.Image = Properties.Resources.username_label;
+            usernameLbl.Location = new Point(267, 84);
+            usernameLbl.Margin = new Padding(0);
             usernameLbl.Name = "usernameLbl";
-            usernameLbl.Size = new Size(193, 70);
+            usernameLbl.Size = new Size(382, 47);
+            usernameLbl.SizeMode = PictureBoxSizeMode.StretchImage;
             usernameLbl.TabIndex = 0;
-            usernameLbl.Text = "USERNAME";
-            usernameLbl.TextAlign = ContentAlignment.MiddleLeft;
+            usernameLbl.TabStop = false;
+            // 
+            // passwordLbl
+            // 
+            passwordLbl.Dock = DockStyle.Fill;
+            passwordLbl.Image = Properties.Resources.password_label;
+            passwordLbl.Location = new Point(267, 170);
+            passwordLbl.Margin = new Padding(0);
+            passwordLbl.Name = "passwordLbl";
+            passwordLbl.Size = new Size(382, 47);
+            passwordLbl.SizeMode = PictureBoxSizeMode.StretchImage;
+            passwordLbl.TabIndex = 1;
+            passwordLbl.TabStop = false;
             // 
             // usernameTextBox
             // 
             usernameTextBox.Dock = DockStyle.Fill;
-            usernameTextBox.Font = new Font("Segoe UI", 25.2F, FontStyle.Regular, GraphicsUnit.Point);
-            usernameTextBox.Location = new Point(512, 38);
+            usernameTextBox.Location = new Point(664, 87);
             usernameTextBox.Name = "usernameTextBox";
-            usernameTextBox.Size = new Size(567, 63);
-            usernameTextBox.TabIndex = 1;
+            usernameTextBox.Size = new Size(427, 41);
+            usernameTextBox.TabIndex = 2;
+            usernameTextBox.Text = "";
             // 
-            // passwordLbl
+            // passwordTextBox
             // 
-            passwordLbl.AutoSize = true;
-            passwordLbl.Dock = DockStyle.Right;
-            passwordLbl.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            passwordLbl.ForeColor = Color.Black;
-            passwordLbl.Location = new Point(309, 128);
-            passwordLbl.Name = "passwordLbl";
-            passwordLbl.Size = new Size(197, 70);
-            passwordLbl.TabIndex = 3;
-            passwordLbl.Text = "PASSWORD";
-            passwordLbl.TextAlign = ContentAlignment.MiddleLeft;
+            passwordTextBox.Dock = DockStyle.Fill;
+            passwordTextBox.Location = new Point(664, 173);
+            passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.Size = new Size(427, 41);
+            passwordTextBox.TabIndex = 3;
+            passwordTextBox.Text = "";
             // 
-            // enterTbl
+            // btmTbl
             // 
-            enterTbl.AutoSize = true;
-            enterTbl.ColumnCount = 3;
-            enterTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            enterTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            enterTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            enterTbl.Controls.Add(button1, 1, 1);
-            enterTbl.Dock = DockStyle.Fill;
-            enterTbl.Location = new Point(3, 482);
-            enterTbl.Name = "enterTbl";
-            enterTbl.RowCount = 3;
-            enterTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
-            enterTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            enterTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
-            enterTbl.Size = new Size(1274, 235);
-            enterTbl.TabIndex = 4;
+            btmTbl.ColumnCount = 3;
+            btmTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39F));
+            btmTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22F));
+            btmTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39F));
+            btmTbl.Controls.Add(enterBtn, 1, 1);
+            btmTbl.Dock = DockStyle.Fill;
+            btmTbl.Location = new Point(0, 468);
+            btmTbl.Margin = new Padding(0);
+            btmTbl.Name = "btmTbl";
+            btmTbl.RowCount = 3;
+            btmTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 37F));
+            btmTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 26F));
+            btmTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 37F));
+            btmTbl.Size = new Size(1280, 252);
+            btmTbl.TabIndex = 4;
             // 
-            // button1
+            // enterBtn
             // 
-            button1.AutoSize = true;
-            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.Dock = DockStyle.Fill;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 22.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(512, 85);
-            button1.Name = "button1";
-            button1.Size = new Size(248, 64);
-            button1.TabIndex = 0;
-            button1.Text = "ENTER";
-            button1.UseVisualStyleBackColor = true;
+            enterBtn.Dock = DockStyle.Fill;
+            enterBtn.Image = Properties.Resources.enter;
+            enterBtn.Location = new Point(499, 93);
+            enterBtn.Margin = new Padding(0);
+            enterBtn.Name = "enterBtn";
+            enterBtn.Size = new Size(281, 65);
+            enterBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            enterBtn.TabIndex = 0;
+            enterBtn.TabStop = false;
+            enterBtn.Click += enterBtn_Click_1;
             // 
             // LoginUC
             // 
@@ -193,16 +195,18 @@
             BackgroundImage = Properties.Resources.Log_in_and_signup;
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(loginTbl);
+            DoubleBuffered = true;
             Name = "LoginUC";
             Size = new Size(1280, 720);
             loginTbl.ResumeLayout(false);
             loginTbl.PerformLayout();
             titleTbl.ResumeLayout(false);
-            titleTbl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)loginLbl).EndInit();
             midTbl.ResumeLayout(false);
-            midTbl.PerformLayout();
-            enterTbl.ResumeLayout(false);
-            enterTbl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)usernameLbl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)passwordLbl).EndInit();
+            btmTbl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)enterBtn).EndInit();
             ResumeLayout(false);
         }
 
@@ -210,16 +214,13 @@
 
         private TableLayoutPanel loginTbl;
         private TableLayoutPanel titleTbl;
-        private Label titleLbl;
         private TableLayoutPanel midTbl;
-        private TableLayoutPanel enterTbl;
-        private Button button1;
-        private Panel usernamePanel;
-        private Label usernameLbl;
-        private TextBox usernameTextBox;
-        private Panel passwordPanel;
-        private TextBox passwordTextBox;
-        private Label passwordLbl;
-        private TableLayoutPanel tableLayoutPanel2;
+        private PictureBox usernameLbl;
+        private PictureBox loginLbl;
+        private PictureBox passwordLbl;
+        private RichTextBox usernameTextBox;
+        private RichTextBox passwordTextBox;
+        private TableLayoutPanel btmTbl;
+        private PictureBox enterBtn;
     }
 }

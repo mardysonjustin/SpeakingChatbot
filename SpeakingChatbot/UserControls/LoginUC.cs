@@ -10,12 +10,18 @@ using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
     public partial class LoginUC : UserControl {
+        public event Action LoginEnterClick;
+
         public LoginUC() {
             InitializeComponent();
         }
 
-        private void usernameLbl_Click(object sender, EventArgs e) {
+        private void enterBtn_Click(object sender, EventArgs e) {
+            LoginEnterClick?.Invoke();
+        }
 
+        private void enterBtn_Click_1(object sender, EventArgs e) {
+            LoginEnterClick?.Invoke();
         }
     }
 }

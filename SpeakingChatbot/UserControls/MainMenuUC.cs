@@ -10,25 +10,35 @@ using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
     public partial class MainMenuUC : UserControl {
+        public event Action ChatbotClick;
+        public event Action ChatClick;
+        public event Action ForumClick;
         public MainMenuUC() {
             InitializeComponent();
         }
 
-        // go to forumUC
-        private void forumTbl_Click(object sender, EventArgs e) {
-
+        private void chatbotIcon_Click(object sender, EventArgs e) {
+            ChatbotClick?.Invoke();
         }
 
-
-        // go to chatbotUC
-        private void chatbotTbl_Click(object sender, EventArgs e) {
-
+        private void chatbotBtn_Click(object sender, EventArgs e) {
+            ChatbotClick?.Invoke();
         }
 
+        private void chatIcon_Click(object sender, EventArgs e) {
+            ChatClick?.Invoke();
+        }
 
-        // go to chatUC
-        private void chatTbl_Click(object sender, EventArgs e) {
+        private void chatBtn_Click(object sender, EventArgs e) {
+            ChatClick?.Invoke();
+        }
 
+        private void forumIcon_Click(object sender, EventArgs e) {
+            ForumClick?.Invoke();
+        }
+
+        private void forumBtn_Click(object sender, EventArgs e) {
+            ForumClick?.Invoke();
         }
     }
 }

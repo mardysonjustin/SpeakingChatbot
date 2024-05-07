@@ -40,6 +40,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(MainPanel);
+            DoubleBuffered = true;
             Name = "Chavatar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm";

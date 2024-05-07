@@ -10,9 +10,14 @@ using System.Windows.Forms;
 
 namespace SpeakingChatbot.UserControls {
     public partial class ChatbotUC : UserControl {
+        public event Action BackBtnClick;
         public ChatbotUC() {
             InitializeComponent();
-            chatPanel.BackColor = Color.FromArgb(200, Color.Black);
+            // chatTbl.BackColor = Color.FromArgb(200, Color.Black);
+        }
+
+        private void backBtn_Click(object sender, EventArgs e) {
+            BackBtnClick?.Invoke();
         }
     }
 }

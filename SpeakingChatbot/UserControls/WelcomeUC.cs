@@ -12,10 +12,15 @@ using System.Drawing.Text;
 
 namespace SpeakingChatbot.UserControls {
     public partial class WelcomeUC : UserControl {
+
+        public event Action WelcomeClick;
         public WelcomeUC() {
             InitializeComponent();
         }
 
+        private void welcomeTblPanel_Click(object sender, EventArgs e) {
+            WelcomeClick?.Invoke();
+        }
     }
 
 
