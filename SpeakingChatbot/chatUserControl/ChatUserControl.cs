@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
+using SpeakingChatbot.UserControls;
 
 namespace SpeakingChatbot.chatUserControl {
     public partial class ChatUserControl : UserControl {
@@ -122,7 +123,7 @@ namespace SpeakingChatbot.chatUserControl {
                 Name = "chatMsg" + chatBoxPanel.Controls.Count,
                 Dock = DockStyle.Top
             };
-
+ 
             chatBoxPanel.Controls.Add(chatMsg);
             chatMsg.BringToFront();
 

@@ -28,7 +28,7 @@ namespace SpeakingChatbot {
         public Chavatar() {
             InitializeComponent();
 
-            WelcomeUC();
+            // WelcomeUC();
 
             welcomeUC.WelcomeClick += LoginSignUpUC;
             loginSignUpUC.WelcomeClick += WelcomeUC;

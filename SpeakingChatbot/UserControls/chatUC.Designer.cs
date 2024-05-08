@@ -36,8 +36,12 @@
             chatBoxTbl = new TableLayoutPanel();
             chatBoxBottomTbl = new TableLayoutPanel();
             sendBtn = new Button();
-            chatTextBox = new TextBox();
-            usernameLbl = new Label();
+            msgBox = new TextBox();
+            topTbl = new TableLayoutPanel();
+            userNameLbl = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            chatBoxMsgTbl = new TableLayoutPanel();
+            chatPanel = new FlowLayoutPanel();
             backTbl = new TableLayoutPanel();
             backBtn = new PictureBox();
             chatTbl.SuspendLayout();
@@ -51,6 +55,8 @@
             chatRightTbl.SuspendLayout();
             chatBoxTbl.SuspendLayout();
             chatBoxBottomTbl.SuspendLayout();
+            topTbl.SuspendLayout();
+            chatBoxMsgTbl.SuspendLayout();
             backTbl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)backBtn).BeginInit();
             SuspendLayout();
@@ -214,7 +220,8 @@
             chatBoxTbl.ColumnCount = 1;
             chatBoxTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             chatBoxTbl.Controls.Add(chatBoxBottomTbl, 0, 2);
-            chatBoxTbl.Controls.Add(usernameLbl, 0, 0);
+            chatBoxTbl.Controls.Add(topTbl, 0, 0);
+            chatBoxTbl.Controls.Add(chatBoxMsgTbl, 0, 1);
             chatBoxTbl.Dock = DockStyle.Fill;
             chatBoxTbl.Location = new Point(0, 68);
             chatBoxTbl.Margin = new Padding(0);
@@ -233,7 +240,7 @@
             chatBoxBottomTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 77F));
             chatBoxBottomTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23F));
             chatBoxBottomTbl.Controls.Add(sendBtn, 1, 0);
-            chatBoxBottomTbl.Controls.Add(chatTextBox, 0, 0);
+            chatBoxBottomTbl.Controls.Add(msgBox, 0, 0);
             chatBoxBottomTbl.Dock = DockStyle.Fill;
             chatBoxBottomTbl.Location = new Point(0, 328);
             chatBoxBottomTbl.Margin = new Padding(0);
@@ -256,31 +263,88 @@
             sendBtn.TabIndex = 0;
             sendBtn.Text = "Send";
             sendBtn.UseVisualStyleBackColor = true;
+            sendBtn.Click += sendBtn_Click;
             // 
-            // chatTextBox
+            // msgBox
             // 
-            chatTextBox.Dock = DockStyle.Fill;
-            chatTextBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            chatTextBox.Location = new Point(5, 5);
-            chatTextBox.Margin = new Padding(5);
-            chatTextBox.Name = "chatTextBox";
-            chatTextBox.Size = new Size(351, 31);
-            chatTextBox.TabIndex = 1;
+            msgBox.Dock = DockStyle.Fill;
+            msgBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            msgBox.Location = new Point(5, 5);
+            msgBox.Margin = new Padding(5);
+            msgBox.Name = "msgBox";
+            msgBox.Size = new Size(351, 31);
+            msgBox.TabIndex = 1;
             // 
-            // usernameLbl
+            // topTbl
             // 
-            usernameLbl.AutoSize = true;
-            usernameLbl.BackColor = Color.Transparent;
-            usernameLbl.Dock = DockStyle.Left;
-            usernameLbl.Font = new Font("SimSun-ExtB", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            usernameLbl.ForeColor = Color.White;
-            usernameLbl.Location = new Point(10, 0);
-            usernameLbl.Margin = new Padding(10, 0, 3, 0);
-            usernameLbl.Name = "usernameLbl";
-            usernameLbl.Size = new Size(133, 47);
-            usernameLbl.TabIndex = 1;
-            usernameLbl.Text = "USERNAME";
-            usernameLbl.TextAlign = ContentAlignment.MiddleRight;
+            topTbl.ColumnCount = 4;
+            topTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
+            topTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
+            topTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7F));
+            topTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3F));
+            topTbl.Controls.Add(userNameLbl, 1, 0);
+            topTbl.Controls.Add(tableLayoutPanel1, 2, 0);
+            topTbl.Dock = DockStyle.Fill;
+            topTbl.Location = new Point(3, 3);
+            topTbl.Name = "topTbl";
+            topTbl.RowCount = 1;
+            topTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            topTbl.Size = new Size(463, 41);
+            topTbl.TabIndex = 1;
+            // 
+            // userNameLbl
+            // 
+            userNameLbl.AutoSize = true;
+            userNameLbl.BackColor = Color.Transparent;
+            userNameLbl.Dock = DockStyle.Left;
+            userNameLbl.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            userNameLbl.ForeColor = Color.White;
+            userNameLbl.Location = new Point(26, 0);
+            userNameLbl.Name = "userNameLbl";
+            userNameLbl.Size = new Size(133, 41);
+            userNameLbl.TabIndex = 0;
+            userNameLbl.Text = "USERNAME";
+            userNameLbl.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(416, 0);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 66F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17F));
+            tableLayoutPanel1.Size = new Size(32, 41);
+            tableLayoutPanel1.TabIndex = 1;
+            // 
+            // chatBoxMsgTbl
+            // 
+            chatBoxMsgTbl.ColumnCount = 3;
+            chatBoxMsgTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            chatBoxMsgTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 98F));
+            chatBoxMsgTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            chatBoxMsgTbl.Controls.Add(chatPanel, 1, 0);
+            chatBoxMsgTbl.Dock = DockStyle.Fill;
+            chatBoxMsgTbl.Location = new Point(3, 50);
+            chatBoxMsgTbl.Name = "chatBoxMsgTbl";
+            chatBoxMsgTbl.RowCount = 1;
+            chatBoxMsgTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            chatBoxMsgTbl.Size = new Size(463, 275);
+            chatBoxMsgTbl.TabIndex = 2;
+            // 
+            // chatPanel
+            // 
+            chatPanel.BackColor = Color.Transparent;
+            chatPanel.Dock = DockStyle.Fill;
+            chatPanel.Location = new Point(4, 0);
+            chatPanel.Margin = new Padding(0);
+            chatPanel.Name = "chatPanel";
+            chatPanel.Size = new Size(453, 275);
+            chatPanel.TabIndex = 0;
             // 
             // backTbl
             // 
@@ -332,9 +396,11 @@
             ((System.ComponentModel.ISupportInitialize)chatLbl).EndInit();
             chatRightTbl.ResumeLayout(false);
             chatBoxTbl.ResumeLayout(false);
-            chatBoxTbl.PerformLayout();
             chatBoxBottomTbl.ResumeLayout(false);
             chatBoxBottomTbl.PerformLayout();
+            topTbl.ResumeLayout(false);
+            topTbl.PerformLayout();
+            chatBoxMsgTbl.ResumeLayout(false);
             backTbl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)backBtn).EndInit();
             ResumeLayout(false);
@@ -351,13 +417,17 @@
         private TableLayoutPanel chatBoxTbl;
         private TableLayoutPanel chatBoxBottomTbl;
         private Button sendBtn;
-        private TextBox chatTextBox;
-        private Label usernameLbl;
+        private TextBox msgBox;
         private TableLayoutPanel chatLblTbl;
         private PictureBox chatLbl;
         private PictureBox botBtn;
         private PictureBox usersBtn;
         private TableLayoutPanel backTbl;
         private PictureBox backBtn;
+        private TableLayoutPanel topTbl;
+        private Label userNameLbl;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel chatBoxMsgTbl;
+        private FlowLayoutPanel chatPanel;
     }
 }

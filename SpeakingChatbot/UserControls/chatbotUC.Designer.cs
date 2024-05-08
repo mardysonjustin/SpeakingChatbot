@@ -33,8 +33,9 @@
             chatTbl = new TableLayoutPanel();
             chatBottomPanel = new TableLayoutPanel();
             sendBtn = new Button();
-            chatTextBox = new TextBox();
-            chatPanel = new Panel();
+            msgBox = new TextBox();
+            chatPanelTbl = new TableLayoutPanel();
+            chatPanel = new FlowLayoutPanel();
             chatbotTbl.SuspendLayout();
             botTbl.SuspendLayout();
             topTbl.SuspendLayout();
@@ -44,6 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)avatar).BeginInit();
             chatTbl.SuspendLayout();
             chatBottomPanel.SuspendLayout();
+            chatPanelTbl.SuspendLayout();
             SuspendLayout();
             // 
             // chatbotTbl
@@ -153,7 +155,7 @@
             chatTbl.ColumnCount = 1;
             chatTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             chatTbl.Controls.Add(chatBottomPanel, 0, 1);
-            chatTbl.Controls.Add(chatPanel, 0, 0);
+            chatTbl.Controls.Add(chatPanelTbl, 0, 0);
             chatTbl.Dock = DockStyle.Fill;
             chatTbl.Location = new Point(20, 20);
             chatTbl.Margin = new Padding(20);
@@ -172,7 +174,7 @@
             chatBottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 77F));
             chatBottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23F));
             chatBottomPanel.Controls.Add(sendBtn, 1, 0);
-            chatBottomPanel.Controls.Add(chatTextBox, 0, 0);
+            chatBottomPanel.Controls.Add(msgBox, 0, 0);
             chatBottomPanel.Dock = DockStyle.Fill;
             chatBottomPanel.Location = new Point(0, 486);
             chatBottomPanel.Margin = new Padding(0);
@@ -196,26 +198,43 @@
             sendBtn.TabIndex = 0;
             sendBtn.Text = "Send";
             sendBtn.UseVisualStyleBackColor = true;
+            sendBtn.Click += sendBtn_Click;
             // 
-            // chatTextBox
+            // msgBox
             // 
-            chatTextBox.Dock = DockStyle.Fill;
-            chatTextBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            chatTextBox.Location = new Point(5, 5);
-            chatTextBox.Margin = new Padding(5);
-            chatTextBox.Name = "chatTextBox";
-            chatTextBox.Size = new Size(324, 30);
-            chatTextBox.TabIndex = 1;
+            msgBox.Dock = DockStyle.Fill;
+            msgBox.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            msgBox.Location = new Point(5, 5);
+            msgBox.Margin = new Padding(5);
+            msgBox.Name = "msgBox";
+            msgBox.Size = new Size(324, 30);
+            msgBox.TabIndex = 1;
+            // 
+            // chatPanelTbl
+            // 
+            chatPanelTbl.BackColor = Color.Transparent;
+            chatPanelTbl.ColumnCount = 3;
+            chatPanelTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            chatPanelTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 98F));
+            chatPanelTbl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1F));
+            chatPanelTbl.Controls.Add(chatPanel, 1, 0);
+            chatPanelTbl.Dock = DockStyle.Fill;
+            chatPanelTbl.Location = new Point(3, 3);
+            chatPanelTbl.Name = "chatPanelTbl";
+            chatPanelTbl.RowCount = 1;
+            chatPanelTbl.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            chatPanelTbl.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            chatPanelTbl.Size = new Size(428, 480);
+            chatPanelTbl.TabIndex = 1;
             // 
             // chatPanel
             // 
-            chatPanel.AutoSize = true;
-            chatPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            chatPanel.BackColor = Color.Transparent;
             chatPanel.Dock = DockStyle.Fill;
-            chatPanel.Location = new Point(3, 3);
+            chatPanel.Location = new Point(7, 3);
             chatPanel.Name = "chatPanel";
-            chatPanel.Size = new Size(428, 480);
-            chatPanel.TabIndex = 1;
+            chatPanel.Size = new Size(413, 474);
+            chatPanel.TabIndex = 0;
             // 
             // ChatbotUC
             // 
@@ -234,9 +253,9 @@
             ((System.ComponentModel.ISupportInitialize)backBtn).EndInit();
             ((System.ComponentModel.ISupportInitialize)avatar).EndInit();
             chatTbl.ResumeLayout(false);
-            chatTbl.PerformLayout();
             chatBottomPanel.ResumeLayout(false);
             chatBottomPanel.PerformLayout();
+            chatPanelTbl.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -249,10 +268,11 @@
         private TableLayoutPanel chatTbl;
         private TableLayoutPanel chatBottomPanel;
         private Button sendBtn;
-        private TextBox chatTextBox;
-        private Panel chatPanel;
+        private TextBox msgBox;
         private TableLayoutPanel backTbl;
         private PictureBox backBtn;
         private PictureBox pictureBox1;
+        private TableLayoutPanel chatPanelTbl;
+        private FlowLayoutPanel chatPanel;
     }
 }
